@@ -20,6 +20,9 @@ for i in range(h):
     for j in range(w):
         if groups[i][j] == -1:
             groups[i][j] = 0
+
+
+
 #show a single group
 single_group = np.zeros(groups.shape)
 select_i = 3
@@ -47,7 +50,7 @@ is_go_through = 0
 nzeros_indexes = np.nonzero(I_edge)
 six = nzeros_indexes[0][0]
 siy = nzeros_indexes[1][0]
-dis_polypoint = 15
+dis_polypoint = 5
 I_mark[six,siy] = 1
 #point from distance 1 to sqrt(2)
 c_x = [0,0, -1,1,-1,1,-1,1]
