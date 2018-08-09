@@ -340,9 +340,9 @@ def edge_crossing(img):
                         if img[ci][cj] == 0:
                             if_crossing = 1
                             break
-                        if ci == 0 or ci == h-1 or cj == 0 or cj == w-1:
-                            is_crossing = 1
-                            break
+                if ci == 0 or ci == h-1 or cj == 0 or cj == w-1:
+                    is_crossing = 1
+                    break
                 if if_crossing == 1:
                     e_img[i][j] = 1
                 else:
