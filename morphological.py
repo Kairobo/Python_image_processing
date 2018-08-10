@@ -9,7 +9,7 @@ Functions that implement some of the same functionality found in Matlab's bwmorp
 import numpy as np
 import scipy.ndimage as ndi
 import scipy.sparse as s
-from copy import deepcopy
+
 
 LUT_DEL_MASK = np.array([[ 8,  4,  2],
                          [16,  0,  1],
@@ -322,31 +322,3 @@ def hood2lu(hood, lut_mask=LUT_DEL_MASK):
 """
 #TODO: need to rearrange
 
-def edge_crossing(img):
-    e_img = deepcopy(img)
-    h,w = img.shape
-    c_x = [0, 0, -1, 1, -1, 1, -1, 1]
-    c_y = [-1, 1, 0, 0, -1, -1, 1, 1]
-    if_crossing = 0
-    for i in range(h):
-        for j in range(w):
-            #check_if_crossing
-            if_crossing = 0
-            if img[i][j] == 1:
-                for k in range(8):
-                    ci = i + c_x[k]
-                    cj = j + c_y[k]
-                    if ci >= 0 and ci < h and cj >= 0 and cj < w:
-                        if img[ci][cj] == 0:
-                            if_crossing = 1
-                            break
-                if ci == 0 or ci == h-1 or cj == 0 or cj == w-1:
-                    is_crossing = 1
-                    break
-                if if_crossing == 1:
-                    e_img[i][j] = 1
-                else:
-                    e_img[i][j] = 0
-            else:
-                e_img[i][j] = 0
-    return e_img
