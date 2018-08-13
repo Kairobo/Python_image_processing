@@ -62,7 +62,7 @@ for i in range(h):
 print("num_groups",ele_num)
 #show a single group
 single_group = np.zeros(groups.shape)
-select_i = 1
+select_i = 2
 for i in range(h):
     for j in range(w):
         if groups[i][j] == select_i:
@@ -75,7 +75,7 @@ single_group_nospur = spur(single_group_norm).astype(np.uint8)
 plt.imshow(single_group_norm)
 plt.show()
 #thicken by dilation
-kernel1 = np.ones((2,2),np.uint8)
+kernel1 = np.ones((3,3),np.uint8)
 dilation = cv2.dilate(single_group_nospur,kernel1,iterations = 1)
 #debug
 plt.imshow(dilation)
